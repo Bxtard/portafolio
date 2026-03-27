@@ -14,8 +14,9 @@
   </div>
 
   <div class="hero__content">
-    <h1 class="hero__name" data-text="Bryan Estrada">
-      Bryan Estrada
+    <h1 class="hero__name">
+      <span class="hero__name-text" data-text="Bryan Estrada">Bryan Estrada</span>
+      <span class="hero__tag" aria-label="alias Bxtard"><span class="hero__tag-bracket">&lt;</span>Bxtard<span class="hero__tag-bracket">/&gt;</span></span>
     </h1>
     <p class="hero__title">
       <span class="typewriter">Fullstack Developer</span>
@@ -108,14 +109,22 @@
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.3em;
+  }
+
+  .hero__name-text {
     color: var(--text-primary);
     position: relative;
     display: inline-block;
     animation: glitch 6s infinite;
   }
 
-  .hero__name::before,
-  .hero__name::after {
+  .hero__name-text::before,
+  .hero__name-text::after {
     content: attr(data-text);
     position: absolute;
     top: 0;
@@ -124,16 +133,32 @@
     height: 100%;
   }
 
-  .hero__name::before {
+  .hero__name-text::before {
     color: var(--accent-magenta);
     z-index: -1;
     animation: glitch-overlay-1 6s infinite;
   }
 
-  .hero__name::after {
+  .hero__name-text::after {
     color: var(--accent-cyan);
     z-index: -1;
     animation: glitch-overlay-2 6s infinite;
+  }
+
+  /* Tag estilo componente */
+  .hero__tag {
+    font-size: clamp(1.2rem, 4.5vw, 2.8rem);
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 12px rgba(0, 255, 245, 0.4);
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .hero__tag-bracket {
+    color: var(--accent-purple);
+    text-shadow: 0 0 10px rgba(177, 79, 255, 0.5);
   }
 
   /* Typewriter */
