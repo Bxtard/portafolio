@@ -29,21 +29,36 @@ const { title } = Astro.props;
   </head>
   <body>
     <nav class="nav" aria-label="Navegación principal">
-      <a href="#inicio">Inicio</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#tech">Tech</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#contacto">Contacto</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M21.752 15.002A9.718 9.718 0 0112.478 24C5.584 24 0 18.416 0 11.522 0 6.126 3.504 1.478 8.998 0a.75.75 0 01.818 1.048 7.5 7.5 0 0010.136 10.136.75.75 0 011.048.818h-.248z"/>
-        </svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zm11.394-5.834a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zm-3.856 5.834a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zm-5.834-3.856a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zm.166-5.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06L6.166 6.166z"/>
-        </svg>
-      </button>
+      <span class="nav__brand">BE</span>
+
+      <div class="nav__links" id="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#tech">Tech</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div class="nav__controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21.752 15.002A9.718 9.718 0 0112.478 24C5.584 24 0 18.416 0 11.522 0 6.126 3.504 1.478 8.998 0a.75.75 0 01.818 1.048 7.5 7.5 0 0010.136 10.136.75.75 0 011.048.818h-.248z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zm11.394-5.834a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zm-3.856 5.834a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zm-5.834-3.856a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.061-1.06l-1.59-1.591zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zm.166-5.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 001.061-1.06L6.166 6.166z"/>
+          </svg>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
+
     <slot />
+
     <script is:inline>
       document.getElementById('theme-toggle').addEventListener('click', function() {
         const html = document.documentElement;
@@ -55,6 +70,23 @@ const { title } = Astro.props;
           html.setAttribute('data-theme', 'light');
           localStorage.setItem('theme', 'light');
         }
+      });
+
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+
+      hamburger.addEventListener('click', function() {
+        const isOpen = navLinks.classList.toggle('nav__links--open');
+        hamburger.classList.toggle('hamburger--open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen.toString());
+      });
+
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('nav__links--open');
+          hamburger.classList.remove('hamburger--open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
       });
     </script>
   </body>
