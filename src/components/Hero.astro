@@ -48,8 +48,8 @@
     width: 200%;
     height: 60%;
     background-image:
-      linear-gradient(to right, rgba(177, 79, 255, 0.15) 1px, transparent 1px),
-      linear-gradient(to top, rgba(177, 79, 255, 0.15) 1px, transparent 1px);
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to top, var(--grid-line) 1px, transparent 1px);
     background-size: 50px 40px;
     transform: perspective(400px) rotateX(60deg);
     transform-origin: center bottom;
@@ -64,8 +64,8 @@
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 0, 0, 0.08) 2px,
-      rgba(0, 0, 0, 0.08) 4px
+      var(--scanline) 2px,
+      var(--scanline) 4px
     );
     pointer-events: none;
     z-index: 2;

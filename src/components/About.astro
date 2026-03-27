@@ -5,21 +5,8 @@
   <h2>Sobre mí</h2>
 
   <div class="about glass-card">
-    <div class="about__avatar" aria-hidden="true">
-      <div class="avatar-placeholder">
-        <!-- Neon silhouette -->
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="120">
-          <circle cx="60" cy="40" r="24" stroke="url(#grad)" stroke-width="2" fill="none"/>
-          <path d="M20 110c0-22 18-40 40-40s40 18 40 40" stroke="url(#grad)" stroke-width="2" fill="none"/>
-          <defs>
-            <linearGradient id="grad" x1="0" y1="0" x2="120" y2="120">
-              <stop offset="0%" stop-color="#ff2d78"/>
-              <stop offset="50%" stop-color="#b14fff"/>
-              <stop offset="100%" stop-color="#00fff5"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+    <div class="about__avatar">
+      <img src="/profile.jpg" alt="Foto de Bryan Estrada" class="avatar-img" width="140" height="140" />
     </div>
     <div class="about__text">
       <p>
@@ -52,16 +39,17 @@
     flex-shrink: 0;
   }
 
-  .avatar-placeholder {
+  .avatar-img {
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(177, 79, 255, 0.08);
-    border: 1px solid rgba(177, 79, 255, 0.25);
-    box-shadow: 0 0 25px rgba(177, 79, 255, 0.15);
+    object-fit: cover;
+    border: 2px solid transparent;
+    background-image: linear-gradient(var(--bg-primary), var(--bg-primary)),
+      linear-gradient(135deg, var(--accent-magenta), var(--accent-purple), var(--accent-cyan));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 0 25px rgba(177, 79, 255, 0.25);
   }
 
   .about__text p {
