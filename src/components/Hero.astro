@@ -1,0 +1,164 @@
+---
+---
+
+<section id="inicio" class="hero" aria-label="Presentación">
+  <!-- Perspective grid background -->
+  <div class="hero__grid" aria-hidden="true"></div>
+  <!-- Scanlines overlay -->
+  <div class="hero__scanlines" aria-hidden="true"></div>
+  <!-- Stars / particles -->
+  <div class="hero__stars" aria-hidden="true">
+    {Array.from({ length: 40 }).map((_, i) => (
+      <span class="star" style={`--x: ${Math.random() * 100}%; --y: ${Math.random() * 100}%; --delay: ${Math.random() * 4}s; --size: ${1 + Math.random() * 2}px;`} />
+    ))}
+  </div>
+
+  <div class="hero__content">
+    <h1 class="hero__name" data-text="Bryan Estrada">
+      Bryan Estrada
+    </h1>
+    <p class="hero__title">
+      <span class="typewriter">Fullstack Developer</span>
+    </p>
+    <p class="hero__location">Barranquilla, Colombia &bull; +5 años de experiencia</p>
+    <div class="hero__cta">
+      <a href="#contacto" class="neon-btn">Contacto</a>
+      <a href="#experiencia" class="neon-btn neon-btn--magenta">Experiencia</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 4rem;
+  }
+
+  /* Perspective grid */
+  .hero__grid {
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    width: 200%;
+    height: 60%;
+    background-image:
+      linear-gradient(to right, rgba(177, 79, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(to top, rgba(177, 79, 255, 0.15) 1px, transparent 1px);
+    background-size: 50px 40px;
+    transform: perspective(400px) rotateX(60deg);
+    transform-origin: center bottom;
+    animation: grid-scroll 3s linear infinite;
+  }
+
+  /* Scanlines */
+  .hero__scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Stars */
+  .hero__stars {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .star {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 3s var(--delay) infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.9; box-shadow: 0 0 6px var(--accent-cyan); }
+  }
+
+  /* Content */
+  .hero__content {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Glitch name */
+  .hero__name {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 8vw, 5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    animation: glitch 6s infinite;
+  }
+
+  .hero__name::before,
+  .hero__name::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__name::before {
+    color: var(--accent-magenta);
+    z-index: -1;
+    animation: glitch-overlay-1 6s infinite;
+  }
+
+  .hero__name::after {
+    color: var(--accent-cyan);
+    z-index: -1;
+    animation: glitch-overlay-2 6s infinite;
+  }
+
+  /* Typewriter */
+  .typewriter {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--accent-cyan);
+    border-right: 2px solid var(--accent-cyan);
+    padding-right: 4px;
+    animation: blink-caret 0.8s step-end infinite;
+    text-shadow: 0 0 10px rgba(0, 255, 245, 0.5);
+  }
+
+  .hero__location {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .hero__cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

@@ -1,0 +1,189 @@
+---
+interface Job {
+  company: string;
+  period: string;
+  tasks: string[];
+}
+
+const jobs: Job[] = [
+  {
+    company: 'OMBIA',
+    period: 'Abril 2024 – Actualidad',
+    tasks: [
+      'Contribuí al desarrollo de ARIS, plataforma de gestión tributaria para el gobierno del Atlántico.',
+      'Optimización del rendimiento y manejo eficiente de datos con Nest.js y Next.js.',
+      'Contribuí al desarrollo de Ariel App, agregando nuevas funcionalidades.',
+    ],
+  },
+  {
+    company: 'SAROCA TEC SAS',
+    period: 'Noviembre 2022 – Marzo 2024',
+    tasks: [
+      'Lideré la migración de una aplicación heredada de Meteor.js a un stack moderno (Next.js + Nest.js).',
+      'Mejoré la recuperación y carga de datos aumentando la eficiencia del sistema.',
+      'Desarrollé y mantuve una app móvil con React Native + Expo para Bault.io.',
+    ],
+  },
+  {
+    company: 'Web Developer Freelance',
+    period: '6 meses',
+    tasks: [
+      'Construcción de aplicaciones web con Vite, React, Next.js, HTML, CSS y JavaScript.',
+      'Desarrollo de APIs con Node.js usando Express y Nest.js.',
+    ],
+  },
+];
+
+const education = [
+  { title: 'Fullstack Web Development', place: 'Make It Real Camp', year: '2022' },
+  { title: 'Ingeniería de Sistemas', place: 'Universidad del Norte, Barranquilla', year: '2017' },
+];
+---
+
+<section id="experiencia" aria-label="Experiencia laboral y educación">
+  <h2>Experiencia</h2>
+
+  <div class="timeline">
+    {jobs.map((job, i) => (
+      <div class="timeline__item">
+        <div class="timeline__dot" aria-hidden="true"></div>
+        <div class="timeline__card glass-card">
+          <h3 class="timeline__company">{job.company}</h3>
+          <span class="timeline__period">{job.period}</span>
+          <ul class="timeline__tasks">
+            {job.tasks.map((task) => (
+              <li>{task}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 style="margin-top: 4rem;">Educación</h2>
+
+  <div class="edu-grid">
+    {education.map((edu) => (
+      <div class="glass-card edu-card">
+        <h3 class="edu-card__title">{edu.title}</h3>
+        <p class="edu-card__place">{edu.place}</p>
+        <span class="edu-card__year">{edu.year}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Timeline */
+  .timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-magenta), var(--accent-purple), var(--accent-cyan));
+    box-shadow: 0 0 8px var(--accent-purple);
+  }
+
+  .timeline__item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline__dot {
+    position: absolute;
+    left: -2rem;
+    top: 1.2rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-purple);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-purple);
+    transform: translateX(calc(-50% + 8px));
+  }
+
+  .timeline__card {
+    margin-left: 0.5rem;
+  }
+
+  .timeline__company {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--accent-magenta);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline__period {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline__tasks {
+    list-style: none;
+    padding: 0;
+  }
+
+  .timeline__tasks li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .timeline__tasks li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-cyan);
+  }
+
+  /* Education */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .edu-card__title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--accent-magenta);
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-card__place {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-card__year {
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+  }
+
+  @media (max-width: 640px) {
+    .timeline {
+      padding-left: 1.5rem;
+    }
+    .timeline__dot {
+      left: -1.5rem;
+    }
+  }
+</style>

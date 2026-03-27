@@ -1,0 +1,91 @@
+---
+---
+
+<section id="sobre-mi" aria-label="Sobre mí">
+  <h2>Sobre mí</h2>
+
+  <div class="about glass-card">
+    <div class="about__avatar" aria-hidden="true">
+      <div class="avatar-placeholder">
+        <!-- Neon silhouette -->
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+          <circle cx="60" cy="40" r="24" stroke="url(#grad)" stroke-width="2" fill="none"/>
+          <path d="M20 110c0-22 18-40 40-40s40 18 40 40" stroke="url(#grad)" stroke-width="2" fill="none"/>
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="120" y2="120">
+              <stop offset="0%" stop-color="#ff2d78"/>
+              <stop offset="50%" stop-color="#b14fff"/>
+              <stop offset="100%" stop-color="#00fff5"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+    <div class="about__text">
+      <p>
+        Desarrollador <strong>Fullstack</strong> con más de 5 años de experiencia en
+        liderazgo de equipos y desarrollo de aplicaciones web. Experto en
+        <span class="highlight">React</span>, <span class="highlight">Next.js</span>,
+        <span class="highlight">Nest.js</span>, <span class="highlight">Express</span>,
+        <span class="highlight">Angular 19</span>, <span class="highlight">.NET 10</span>
+        y bases de datos como <span class="highlight">PostgreSQL</span> y
+        <span class="highlight">MongoDB</span>.
+      </p>
+      <p>
+        Con sólida gestión de servidores usando <span class="highlight">PM2</span>.
+        Comprometido con la entrega de soluciones de software innovadoras y de alta calidad.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about__avatar {
+    flex-shrink: 0;
+  }
+
+  .avatar-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(177, 79, 255, 0.08);
+    border: 1px solid rgba(177, 79, 255, 0.25);
+    box-shadow: 0 0 25px rgba(177, 79, 255, 0.15);
+  }
+
+  .about__text p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  .about__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .highlight {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 6px rgba(0, 255, 245, 0.3);
+  }
+
+  strong {
+    color: var(--accent-magenta);
+  }
+
+  @media (max-width: 640px) {
+    .about {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

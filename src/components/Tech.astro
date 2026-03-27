@@ -1,0 +1,154 @@
+---
+interface TechItem {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+const categories: { title: string; items: TechItem[] }[] = [
+  {
+    title: 'Frontend',
+    items: [
+      { name: 'React', icon: 'react', color: '#61DAFB' },
+      { name: 'Next.js', icon: 'nextdotjs', color: '#ffffff' },
+      { name: 'Angular', icon: 'angular', color: '#DD0031' },
+      { name: 'Vite', icon: 'vite', color: '#646CFF' },
+      { name: 'JavaScript', icon: 'javascript', color: '#F7DF1E' },
+      { name: 'HTML5', icon: 'html5', color: '#E34F26' },
+      { name: 'Astro', icon: 'astro', color: '#BC52EE' },
+    ],
+  },
+  {
+    title: 'Backend',
+    items: [
+      { name: 'Node.js', icon: 'nodedotjs', color: '#339933' },
+      { name: 'NestJS', icon: 'nestjs', color: '#E0234E' },
+      { name: 'Express', icon: 'express', color: '#ffffff' },
+      { name: '.NET', icon: 'dotnet', color: '#512BD4' },
+      { name: 'Python', icon: 'python', color: '#3776AB' },
+    ],
+  },
+  {
+    title: 'Bases de Datos',
+    items: [
+      { name: 'PostgreSQL', icon: 'postgresql', color: '#4169E1' },
+      { name: 'MongoDB', icon: 'mongodb', color: '#47A248' },
+      { name: 'Redis', icon: 'redis', color: '#DC382D' },
+      { name: 'Prisma', icon: 'prisma', color: '#2D3748' },
+      { name: 'TypeORM', icon: 'typeorm', color: '#FE0803' },
+      { name: 'EF Core', icon: 'dotnet', color: '#512BD4' },
+    ],
+  },
+  {
+    title: 'Cloud & DevOps',
+    items: [
+      { name: 'PM2', icon: 'pm2', color: '#2B037A' },
+      { name: 'Git', icon: 'git', color: '#F05032' },
+      { name: 'GitHub', icon: 'github', color: '#ffffff' },
+      { name: 'GitLab', icon: 'gitlab', color: '#FC6D26' },
+    ],
+  },
+  {
+    title: 'API & Docs',
+    items: [
+      { name: 'Swagger', icon: 'swagger', color: '#85EA2D' },
+      { name: 'Scalar', icon: 'scalar', color: '#1A1A1A' },
+    ],
+  },
+];
+
+let delayIndex = 0;
+---
+
+<section id="tech" aria-label="Tecnologías">
+  <h2>Tecnologías</h2>
+
+  {categories.map((cat) => (
+    <div class="tech-category">
+      <h3 class="tech-category__title">{cat.title}</h3>
+      <div class="tech-grid">
+        {cat.items.map((tech) => {
+          const delay = delayIndex++ * 0.15;
+          return (
+            <div class="tech-item" style={`--float-delay: ${delay}s; --glow-color: ${tech.color};`}>
+              <div class="tech-item__icon">
+                <img
+                  src={`https://cdn.simpleicons.org/${tech.icon}/${tech.color.replace('#', '')}`}
+                  alt={`Logo de ${tech.name}`}
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                />
+              </div>
+              <span class="tech-item__name">{tech.name}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  ))}
+</section>
+
+<style>
+  .tech-category {
+    margin-bottom: 3rem;
+  }
+
+  .tech-category__title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-purple);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    animation: float 3s ease-in-out infinite;
+    animation-delay: var(--float-delay);
+  }
+
+  .tech-item__icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 12px rgba(177, 79, 255, 0.1);
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .tech-item:hover .tech-item__icon {
+    border-color: var(--glow-color);
+    box-shadow: 0 0 20px var(--glow-color), 0 0 40px rgba(177, 79, 255, 0.15);
+  }
+
+  .tech-item__icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .tech-item__name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+</style>
