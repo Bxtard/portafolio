@@ -5,4 +5,7 @@ export default defineConfig({
   output: 'static',
   site: 'https://bxtard.github.io',
   base: '/portafolio',
+  image: {
+    domains: ['cdn.simpleicons.org'],
+  },
 });

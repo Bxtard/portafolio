@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface TechItem {
   name: string;
   icon: string;
@@ -76,11 +78,11 @@ let delayIndex = 0;
           return (
             <div class="tech-item" style={`--float-delay: ${delay}s; --glow-color: ${tech.color};`}>
               <div class="tech-item__icon">
-                <img
+                <Image
                   src={`https://cdn.simpleicons.org/${tech.icon}/${tech.color.replace('#', '')}`}
                   alt={`${tech.name} logo`}
-                  width="40"
-                  height="40"
+                  width={40}
+                  height={40}
                   loading="lazy"
                 />
               </div>
