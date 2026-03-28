@@ -2,18 +2,22 @@
 interface Job {
   company: string;
   period: string;
-  tasks: string[];
+  tasks?: string[];
+  intro?: string;
+  outro?: string;
 }
 
 const jobs: Job[] = [
   {
     company: 'OMBIA',
     period: 'Abril 2024 – Actualidad',
+    intro: 'Actualmente me desempeño como Fullstack Developer en Ombia, donde he participado en el desarrollo de soluciones tecnológicas de alto impacto en el sector público y financiero, enfocadas en escalabilidad, experiencia de usuario y procesamiento eficiente de datos.',
     tasks: [
-      'Contribuí al desarrollo de ARIS, plataforma de gestión tributaria para el gobierno del Atlántico.',
-      'Optimización del rendimiento y manejo eficiente de datos con Nest.js y Next.js.',
-      'Contribuí al desarrollo de Ariel App, agregando nuevas funcionalidades.',
+      'En el proyecto ARIS, contribuí al desarrollo del portal de impuestos del Atlántico, liderando la migración de datos desde un sistema legacy hacia una arquitectura moderna basada en PostgreSQL. Además, fui co-responsable del módulo de rentas, donde optimizamos la experiencia del usuario y simplificamos el proceso de declaración. Estas mejoras permitieron reducir significativamente la fricción del sistema anterior, eliminando problemas como caídas de sesión y procesos repetitivos, lo que facilitó que más usuarios pudieran declarar de manera autónoma sin depender de intermediarios. Asimismo, implementé integraciones de pagos virtuales que permitieron realizar el pago en minutos directamente desde la plataforma, contribuyendo a la reducción de la morosidad.',
+      'Posteriormente, participé en el proyecto ARIEL, una solución basada en inteligencia artificial para consultas legales. Allí desarrollé casos de uso dinámicos que transforman formularios de usuario en prompts estructurados, mejorando la precisión y relevancia de las respuestas generadas. Adicionalmente, resolví un problema crítico de escalabilidad relacionado con el cargue masivo de documentos, diseñando e implementando un sistema de procesamiento asíncrono mediante colas utilizando Redis y Amazon SQS. Esta solución evitó la sobrecarga de memoria en el servidor y permitió manejar grandes volúmenes de información de forma eficiente y estable.',
+      'Actualmente, formo parte del desarrollo de una plataforma de planeación financiera para Findeter, orientada a la proyección de escenarios financieros a 15 años. En este sistema se modelan variables complejas como deuda externa, inversiones, flujo de caja, bonos, cartera activa, operaciones en moneda extranjera, nómina y préstamos. Mi rol se centra en el desarrollo fullstack de funcionalidades críticas y en la construcción de una arquitectura robusta capaz de soportar grandes volúmenes de datos y cálculos financieros estratégicos.',
     ],
+    outro: 'A lo largo de estos proyectos, he trabajado con tecnologías como Next.js, NestJS, TypeORM, PostgreSQL, Angular, .NET Core, SQL Server, Redis, Amazon SQS, Supabase, Azure Blob Storage y Python, fortaleciendo mis habilidades en diseño de sistemas escalables, optimización de rendimiento y desarrollo orientado a impacto.',
   },
   {
     company: 'SAROCA TEC SAS',
@@ -50,11 +54,13 @@ const education = [
         <div class="timeline__card glass-card">
           <h3 class="timeline__company">{job.company}</h3>
           <span class="timeline__period">{job.period}</span>
+          {job.intro && <p class="timeline__intro">{job.intro}</p>}
           <ul class="timeline__tasks">
-            {job.tasks.map((task) => (
+            {job.tasks?.map((task) => (
               <li>{task}</li>
             ))}
           </ul>
+          {job.outro && <p class="timeline__outro">{job.outro}</p>}
         </div>
       </div>
     ))}
@@ -149,6 +155,21 @@ const education = [
     position: absolute;
     left: 0;
     color: var(--accent-cyan);
+  }
+
+  .timeline__intro,
+  .timeline__outro {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .timeline__intro {
+    margin-bottom: 0.9rem;
+  }
+
+  .timeline__outro {
+    margin-top: 0.9rem;
   }
 
   /* Education */
