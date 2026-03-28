@@ -5,7 +5,7 @@ interface TechItem {
   color: string;
 }
 
-const categories: { title: string; items: TechItem[] }[] = [
+const categories: { title: string; titleEn?: string; items: TechItem[] }[] = [
   {
     title: 'Frontend',
     items: [
@@ -29,7 +29,7 @@ const categories: { title: string; items: TechItem[] }[] = [
     ],
   },
   {
-    title: 'Bases de Datos',
+    title: 'Bases de Datos', titleEn: 'Databases',
     items: [
       { name: 'PostgreSQL', icon: 'postgresql', color: '#4169E1' },
       { name: 'MongoDB', icon: 'mongodb', color: '#47A248' },
@@ -61,11 +61,15 @@ let delayIndex = 0;
 ---
 
 <section id="tech" aria-label="Tecnologías">
-  <h2>Tecnologías</h2>
+  <h2><span class="lang-es">Tecnologías</span><span class="lang-en">Technologies</span></h2>
 
   {categories.map((cat) => (
     <div class="tech-category">
-      <h3 class="tech-category__title">{cat.title}</h3>
+      <h3 class="tech-category__title">
+        {cat.titleEn ? (
+          <><span class="lang-es">{cat.title}</span><span class="lang-en">{cat.titleEn}</span></>
+        ) : cat.title}
+      </h3>
       <div class="tech-grid">
         {cat.items.map((tech) => {
           const delay = delayIndex++ * 0.15;
@@ -74,7 +78,7 @@ let delayIndex = 0;
               <div class="tech-item__icon">
                 <img
                   src={`https://cdn.simpleicons.org/${tech.icon}/${tech.color.replace('#', '')}`}
-                  alt={`Logo de ${tech.name}`}
+                  alt={`${tech.name} logo`}
                   width="40"
                   height="40"
                   loading="lazy"

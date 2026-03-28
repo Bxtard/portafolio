@@ -7,17 +7,20 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" data-lang="es">
   <head>
     <script is:inline>
       (function() {
         const saved = localStorage.getItem('theme');
         if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        const lang = localStorage.getItem('lang') || 'es';
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
       })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bryan Estrada — Fullstack Developer. React, Next.js, Nest.js, Angular, .NET y más." />
+    <meta name="description" content="Bryan Estrada — Fullstack Developer. React, Next.js, Nest.js, Angular, .NET and more." />
     <link rel="icon" type="image/svg+xml" href="/portafolio/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,14 +35,19 @@ const { title } = Astro.props;
       <span class="nav__brand">BE</span>
 
       <div class="nav__links" id="nav-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#inicio"><span class="lang-es">Inicio</span><span class="lang-en">Home</span></a>
+        <a href="#sobre-mi"><span class="lang-es">Sobre mí</span><span class="lang-en">About</span></a>
         <a href="#tech">Tech</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#experiencia"><span class="lang-es">Experiencia</span><span class="lang-en">Experience</span></a>
+        <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
       </div>
 
       <div class="nav__controls">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-toggle__option lang-toggle__option--active" data-opt="es">ES</span>
+          <span class="lang-toggle__option" data-opt="en">EN</span>
+        </button>
+
         <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M21.752 15.002A9.718 9.718 0 0112.478 24C5.584 24 0 18.416 0 11.522 0 6.126 3.504 1.478 8.998 0a.75.75 0 01.818 1.048 7.5 7.5 0 0010.136 10.136.75.75 0 011.048.818h-.248z"/>
@@ -60,6 +68,19 @@ const { title } = Astro.props;
     <slot />
 
     <script is:inline>
+      document.getElementById('lang-toggle').addEventListener('click', function() {
+        var html = document.documentElement;
+        var current = html.getAttribute('data-lang') || 'es';
+        var next = current === 'es' ? 'en' : 'es';
+        html.setAttribute('data-lang', next);
+        html.setAttribute('lang', next);
+        localStorage.setItem('lang', next);
+        var esOpt = document.querySelector('.lang-toggle__option[data-opt="es"]');
+        var enOpt = document.querySelector('.lang-toggle__option[data-opt="en"]');
+        esOpt.classList.toggle('lang-toggle__option--active', next === 'es');
+        enOpt.classList.toggle('lang-toggle__option--active', next === 'en');
+      });
+
       document.getElementById('theme-toggle').addEventListener('click', function() {
         const html = document.documentElement;
         const isLight = html.getAttribute('data-theme') === 'light';

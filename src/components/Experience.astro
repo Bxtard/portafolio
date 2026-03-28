@@ -2,52 +2,77 @@
 interface Job {
   company: string;
   period: string;
+  periodEn?: string;
   tasks?: string[];
+  tasksEn?: string[];
   intro?: string;
+  introEn?: string;
   outro?: string;
+  outroEn?: string;
 }
 
 const jobs: Job[] = [
   {
     company: 'OMBIA',
     period: 'Abril 2024 – Actualidad',
+    periodEn: 'April 2024 – Present',
     intro: 'Actualmente me desempeño como Fullstack Developer en Ombia, donde he participado en el desarrollo de soluciones tecnológicas de alto impacto en el sector público y financiero, enfocadas en escalabilidad, experiencia de usuario y procesamiento eficiente de datos.',
+    introEn: 'I currently work as a Fullstack Developer at Ombia, where I have participated in the development of high-impact technological solutions in the public and financial sectors, focused on scalability, user experience, and efficient data processing.',
     tasks: [
       'En el proyecto ARIS, contribuí al desarrollo del portal de impuestos del Atlántico, liderando la migración de datos desde un sistema legacy hacia una arquitectura moderna basada en PostgreSQL. Además, fui co-responsable del módulo de rentas, donde optimizamos la experiencia del usuario y simplificamos el proceso de declaración. Estas mejoras permitieron reducir significativamente la fricción del sistema anterior, eliminando problemas como caídas de sesión y procesos repetitivos, lo que facilitó que más usuarios pudieran declarar de manera autónoma sin depender de intermediarios. Asimismo, implementé integraciones de pagos virtuales que permitieron realizar el pago en minutos directamente desde la plataforma, contribuyendo a la reducción de la morosidad.',
       'Posteriormente, participé en el proyecto ARIEL, una solución basada en inteligencia artificial para consultas legales. Allí desarrollé casos de uso dinámicos que transforman formularios de usuario en prompts estructurados, mejorando la precisión y relevancia de las respuestas generadas. Adicionalmente, resolví un problema crítico de escalabilidad relacionado con el cargue masivo de documentos, diseñando e implementando un sistema de procesamiento asíncrono mediante colas utilizando Redis y Amazon SQS. Esta solución evitó la sobrecarga de memoria en el servidor y permitió manejar grandes volúmenes de información de forma eficiente y estable.',
       'Actualmente, formo parte del desarrollo de una plataforma de planeación financiera para Findeter, orientada a la proyección de escenarios financieros a 15 años. En este sistema se modelan variables complejas como deuda externa, inversiones, flujo de caja, bonos, cartera activa, operaciones en moneda extranjera, nómina y préstamos. Mi rol se centra en el desarrollo fullstack de funcionalidades críticas y en la construcción de una arquitectura robusta capaz de soportar grandes volúmenes de datos y cálculos financieros estratégicos.',
     ],
+    tasksEn: [
+      'In the ARIS project, I contributed to the development of the Atlántico tax portal, leading the data migration from a legacy system to a modern architecture based on PostgreSQL. Additionally, I co-led the revenue module, where we optimized the user experience and simplified the declaration process. These improvements significantly reduced friction from the previous system, eliminating issues such as session drops and repetitive processes, enabling more users to file declarations autonomously without relying on intermediaries. I also implemented virtual payment integrations that allowed payments to be completed in minutes directly from the platform, contributing to the reduction of delinquency.',
+      'Subsequently, I participated in the ARIEL project, an AI-based solution for legal consultations. There, I developed dynamic use cases that transform user forms into structured prompts, improving the accuracy and relevance of generated responses. Additionally, I resolved a critical scalability issue related to bulk document uploading by designing and implementing an asynchronous processing system using queues with Redis and Amazon SQS. This solution prevented server memory overload and enabled efficient and stable handling of large volumes of information.',
+      'Currently, I am part of the development of a financial planning platform for Findeter, aimed at projecting financial scenarios over 15 years. This system models complex variables such as external debt, investments, cash flow, bonds, active portfolio, foreign currency operations, payroll, and loans. My role focuses on fullstack development of critical functionalities and building a robust architecture capable of supporting large volumes of data and strategic financial calculations.',
+    ],
     outro: 'A lo largo de estos proyectos, he trabajado con tecnologías como Next.js, NestJS, TypeORM, PostgreSQL, Angular, .NET Core, SQL Server, Redis, Amazon SQS, Supabase, Azure Blob Storage y Python, fortaleciendo mis habilidades en diseño de sistemas escalables, optimización de rendimiento y desarrollo orientado a impacto.',
+    outroEn: 'Throughout these projects, I have worked with technologies such as Next.js, NestJS, TypeORM, PostgreSQL, Angular, .NET Core, SQL Server, Redis, Amazon SQS, Supabase, Azure Blob Storage, and Python, strengthening my skills in scalable system design, performance optimization, and impact-driven development.',
   },
   {
     company: 'SAROCA TEC SAS',
     period: 'Noviembre 2022 – Marzo 2024',
+    periodEn: 'November 2022 – March 2024',
     intro: 'Durante mi experiencia en Saroca Tec SAS, participé en el mantenimiento y evolución de múltiples productos relacionados con el ecosistema de criptomonedas.',
+    introEn: 'During my experience at Saroca Tec SAS, I participated in the maintenance and evolution of multiple products related to the cryptocurrency ecosystem.',
     tasks: [
       'Trabajé en Bault.io, una plataforma orientada a la compra de activos como Bitcoin y Tether, donde estuve enfocado en la mejora de la interfaz gráfica y en la refactorización del código, contribuyendo a una experiencia de usuario más clara y a una base de código más mantenible.',
       'Formé parte del desarrollo de Criptomatch, una aplicación construida desde cero para el intercambio P2P de criptomonedas como Ethereum, Bitcoin, Tether y Dogecoin. Participé activamente en la construcción de funcionalidades clave y en la evolución del producto en sus primeras etapas.',
       'Trabajé en la implementación de sistemas de métricas y herramientas internas para la gestión de PQRS y analítica, utilizadas por los equipos de soporte de las diferentes plataformas. Estas soluciones estaban inicialmente desarrolladas en Meteor.js, con aplicaciones independientes para cada producto.',
       'Gracias a mi desempeño y capacidad de liderazgo, fui promovido a líder de equipo, donde asumí la responsabilidad de dirigir la migración de estas aplicaciones hacia una arquitectura moderna basada en Next.js (frontend) y NestJS (backend). Este proceso incluyó la eliminación de funcionalidades redundantes, la optimización del código y la unificación de sistemas, logrando un incremento aproximado del 70% en la velocidad y rendimiento de las aplicaciones.',
     ],
+    tasksEn: [
+      'I worked on Bault.io, a platform focused on purchasing assets like Bitcoin and Tether, where I concentrated on improving the graphical interface and refactoring code, contributing to a clearer user experience and a more maintainable codebase.',
+      'I was part of the development of Criptomatch, an application built from scratch for P2P cryptocurrency exchange including Ethereum, Bitcoin, Tether, and Dogecoin. I actively participated in building key functionalities and in the product\'s evolution during its early stages.',
+      'I worked on implementing metrics systems and internal tools for PQRS management and analytics, used by the support teams of the different platforms. These solutions were initially developed in Meteor.js, with independent applications for each product.',
+      'Thanks to my performance and leadership skills, I was promoted to team lead, where I took on the responsibility of directing the migration of these applications to a modern architecture based on Next.js (frontend) and NestJS (backend). This process included eliminating redundant features, optimizing code, and unifying systems, achieving an approximate 70% increase in application speed and performance.',
+    ],
   },
   {
     company: 'Web Developer Freelance',
     period: '6 meses',
+    periodEn: '6 months',
     tasks: [
       'Construcción de aplicaciones web con Vite, React, Next.js, HTML, CSS y JavaScript.',
       'Desarrollo de APIs con Node.js usando Express y Nest.js.',
+    ],
+    tasksEn: [
+      'Building web applications with Vite, React, Next.js, HTML, CSS, and JavaScript.',
+      'API development with Node.js using Express and Nest.js.',
     ],
   },
 ];
 
 const education = [
-  { title: 'Fullstack Web Development', place: 'Make It Real Camp', year: '2022' },
-  { title: 'Ingeniería de Sistemas', place: 'Universidad del Norte, Barranquilla', year: '2017' },
+  { title: 'Fullstack Web Development', titleEn: 'Fullstack Web Development', place: 'Make It Real Camp', year: '2022' },
+  { title: 'Ingeniería de Sistemas', titleEn: 'Systems Engineering', place: 'Universidad del Norte, Barranquilla', year: '2017' },
 ];
 ---
 
 <section id="experiencia" aria-label="Experiencia laboral y educación">
-  <h2>Experiencia</h2>
+  <h2><span class="lang-es">Experiencia</span><span class="lang-en">Experience</span></h2>
 
   <div class="timeline">
     {jobs.map((job, i) => (
@@ -55,25 +80,40 @@ const education = [
         <div class="timeline__dot" aria-hidden="true"></div>
         <div class="timeline__card glass-card">
           <h3 class="timeline__company">{job.company}</h3>
-          <span class="timeline__period">{job.period}</span>
-          {job.intro && <p class="timeline__intro">{job.intro}</p>}
-          <ul class="timeline__tasks">
+          <span class="timeline__period">
+            <span class="lang-es">{job.period}</span>
+            {job.periodEn && <span class="lang-en">{job.periodEn}</span>}
+          </span>
+          {job.intro && <p class="timeline__intro lang-es">{job.intro}</p>}
+          {job.introEn && <p class="timeline__intro lang-en">{job.introEn}</p>}
+          <ul class="timeline__tasks lang-es">
             {job.tasks?.map((task) => (
               <li>{task}</li>
             ))}
           </ul>
-          {job.outro && <p class="timeline__outro">{job.outro}</p>}
+          {job.tasksEn && (
+            <ul class="timeline__tasks lang-en">
+              {job.tasksEn.map((task) => (
+                <li>{task}</li>
+              ))}
+            </ul>
+          )}
+          {job.outro && <p class="timeline__outro lang-es">{job.outro}</p>}
+          {job.outroEn && <p class="timeline__outro lang-en">{job.outroEn}</p>}
         </div>
       </div>
     ))}
   </div>
 
-  <h2 style="margin-top: 2.5rem;">Educación</h2>
+  <h2 style="margin-top: 2.5rem;"><span class="lang-es">Educación</span><span class="lang-en">Education</span></h2>
 
   <div class="edu-grid">
     {education.map((edu) => (
       <div class="glass-card edu-card">
-        <h3 class="edu-card__title">{edu.title}</h3>
+        <h3 class="edu-card__title">
+          <span class="lang-es">{edu.title}</span>
+          <span class="lang-en">{edu.titleEn}</span>
+        </h3>
         <p class="edu-card__place">{edu.place}</p>
         <span class="edu-card__year">{edu.year}</span>
       </div>
